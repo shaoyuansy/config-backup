@@ -1,0 +1,53 @@
+---
+ip: "192.168.10.10"
+memory: 4096
+cpus: 4
+provider: virtualbox
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: E:/wamp/www/shield-admin-web
+      to: /home/vagrant/web/shield-admin-web
+
+    - map: E:/wamp/www/shield-user-web
+      to: /home/vagrant/web/shield-user-web
+      php: "7.1"
+
+    - map: E:/wamp/www/swagger-api-web
+      to: /home/vagrant/web/swagger-api-web
+      
+    - map: E:/wamp/www/magic-situational-web
+      to: /home/vagrant/web/magic-situational-web
+
+sites:
+    - map: admin.shield.loc
+      to: /home/vagrant/web/shield-admin-web/api/public
+
+    - map: user.shield.loc
+      to: /home/vagrant/web/shield-user-web/api/public
+
+    - map: api.veda.loc
+      to: /home/vagrant/web/swagger-api-web/public
+    
+    - map: ms.veda.loc
+      to: /home/vagrant/web/magic-situational-web/api/public
+
+databases:
+    - homestead
+
+# blackfire:
+#     - id: foo
+#       token: bar
+#       client-id: foo
+#       client-token: bar
+
+# ports:
+#     - send: 50000
+#       to: 5000
+#     - send: 7777
+#       to: 777
+#       protocol: udp
